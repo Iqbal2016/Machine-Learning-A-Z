@@ -19,3 +19,43 @@ test_set = subset(dataset, split == FALSE)
 # Feature Scaling
 # training_set = scale(training_set)
 # test_set = scale(test_set)
+
+#regressor  = lm(formula = Profit ~ R.D.Spend + Administraton + Marketing.Spend + State)
+regressor  = lm(formula = Profit ~ ., data = training_set)
+
+#Predicting the Test set results
+y_pred = predict(regressor, newdata = test_set)
+
+# Building the optimal model using Backward Elimination
+regressor  = lm(formula = Profit ~ R.D.Spend + Administration + Marketing.Spend + State, data = dataset)
+
+summary(regressor)
+
+regressor  = lm(formula = Profit ~ R.D.Spend + Administration + Marketing.Spend, data = dataset)
+
+summary(regressor)
+
+regressor  = lm(formula = Profit ~ R.D.Spend + Marketing.Spend, data = dataset)
+
+summary(regressor)
+
+regressor  = lm(formula = Profit ~ R.D.Spend, data = dataset)
+
+summary(regressor)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
