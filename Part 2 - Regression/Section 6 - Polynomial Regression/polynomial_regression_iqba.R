@@ -32,15 +32,36 @@ summary(poly_reg)
 #install.packages('ggplot2')
 library(ggplot2)
 ggplot() +
-  geom_point(aes(x = dataset$Level , y = dataset$Salary),
+  geom_point(aes(x = dataset$Level, y = dataset$Salary),
              colour = 'red') +
-  grom_line(aes(x = dataset$Level, y = predict(lin_reg, newdata = dataset)),
-            colour = 'blue') + 
+  geom_line(aes(x = dataset$Level, y = predict(lin_reg, newdata = dataset)),
+            colour = 'blue') +
   ggtitle('Truth or Bluff (Linear Regression)') +
   xlab('Level') +
   ylab('Salary')
 
 # VIsualising the Plynomial Regression results
+
+library(ggplot2)
+ggplot() +
+  geom_point(aes(x = dataset$Level, y = dataset$Salary),
+             colour = 'red') +
+  geom_line(aes(x = dataset$Level, y = predict(poly_reg, newdata = dataset)),
+            colour = 'blue') +
+  ggtitle('Truth or Bluff (Polynomial Regression)') +
+  xlab('Level') +
+  ylab('Salary')
+
+# Predicting a new result with Linear Regression
+y_pred = predict(lin_reg, data.frame(Level = 6.5))
+
+# Predicting a new result with Polynomial Regression
+
+y_pred = predict(poly_reg, data.frame(Level = 6.5,
+                                      Level2 = 6.5^2,
+                                      Level3 = 6.5^3,
+                                      Level4 = 6.5^4))
+
 
 
 
