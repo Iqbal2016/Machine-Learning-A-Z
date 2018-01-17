@@ -18,9 +18,9 @@ y = dataset.iloc[:, 2].values
 
 # Feature Scaling
 from sklearn.preprocessing import StandardScaler
-sc_X = StandardScaler()
+sc_x = StandardScaler()
 sc_y = StandardScaler()
-X = sc_X.fit_transform(X)
+x = sc_x.fit_transform(x)
 y = sc_y.fit_transform(y)
 
 # Fitting SVR to the dataset
@@ -31,6 +31,7 @@ regressor.fit(x, y)
 # Predicting a new result
 
 y_pred = regressor.predict(6.5)
+y_pred = sc_y.inverse_transform(y_pred)
 
 # Visualising the SVR results
 plt.scatter(x, y, color = 'red')
